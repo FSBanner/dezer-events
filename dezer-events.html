@@ -626,10 +626,11 @@ let nextId = 7;
 // ════════════════════════════════════
 //  CONFIG — pegá tu URL de Apps Script aquí
 // ════════════════════════════════════
-var GAS_URL = 'https://dezer-proxy.nachoallaria.workers.dev';
+var GAS_URL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
 // Ejemplo: 'https://script.google.com/macros/s/AKfycby.../exec'
+// O proxy:  'https://dezer-proxy.tunombre.workers.dev'
 
-var GAS_CONFIGURED = (GAS_URL.indexOf('script.google.com') !== -1);
+var GAS_CONFIGURED = (GAS_URL.indexOf('http') === 0 && GAS_URL.indexOf('TU_URL') === -1);
 
 // ════════════════════════════════════
 //  LOCAL CACHE (escritura rápida)
@@ -679,22 +680,17 @@ function setSyncStatus(state){
 }
 
 // ════════════════════════════════════
-//  fetchData() — JSONP (evita CORS en GET)
+//  fetchData() — fetch normal (el Worker agrega CORS)
 // ════════════════════════════════════
 function fetchData(){
   if(!GAS_CONFIGURED){ setSyncStatus('idle'); return; }
   setSyncStatus('busy');
-
-  // JSONP: inyectamos un <script> en lugar de fetch para evitar el bloqueo CORS
-  var cbName = 'dzCb_' + Date.now();
-  var script  = document.createElement('script');
-
-  window[cbName] = function(data){
-    // Limpieza
-    delete window[cbName];
-    if(script.parentNode) script.parentNode.removeChild(script);
-    // Procesar datos
-    try{
+  fetch(GAS_URL, { method:'GET', redirect:'follow' })
+    .then(function(res){
+      if(!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function(data){
       if(!data || !Array.isArray(data.events)) throw new Error('Formato inesperado');
       events = data.events;
       nextId = data.nextId || (Math.max.apply(null, events.map(function(e){ return e.id||0; })) + 1);
@@ -704,23 +700,12 @@ function fetchData(){
       else if(view==='calendar') renderCalendar();
       setSyncStatus('ok');
       setTimeout(function(){ setSyncStatus('idle'); }, 3000);
-    }catch(err){
-      console.warn('fetchData parse error:', err);
+    })
+    .catch(function(err){
+      console.warn('fetchData error:', err);
       setSyncStatus('error');
       setTimeout(function(){ setSyncStatus('idle'); }, 5000);
-    }
-  };
-
-  script.onerror = function(){
-    delete window[cbName];
-    if(script.parentNode) script.parentNode.removeChild(script);
-    console.warn('fetchData JSONP error');
-    setSyncStatus('error');
-    setTimeout(function(){ setSyncStatus('idle'); }, 5000);
-  };
-
-  script.src = GAS_URL + '?callback=' + cbName;
-  document.head.appendChild(script);
+    });
 }
 
 // ════════════════════════════════════
