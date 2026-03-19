@@ -129,6 +129,8 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
 .tc{background:#FFF4E6;color:#8A5800}   /* Campaña     — ambar */
 .tp{background:#EEF5EE;color:#2E6040}   /* Produccion  — verde */
 .tsh{background:#F3EFF8;color:#6A3A8A}  /* Shooting    — violeta */
+.tdn{background:#FBF0F3;color:#7A3A50}  /* Cena Privada — rosado */
+.tgf{background:#EBF5F7;color:#2A6A7A}  /* Global Family — teal */
 
 /* BADGES: STATUS */
 .sb2{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:500}
@@ -220,6 +222,8 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
 .cp-c{background:#FFF4E6;color:#8A5800}
 .cp-p{background:#EEF5EE;color:#2E6040}
 .cp-s{background:#F3EFF8;color:#6A3A8A}
+.cp-d{background:#FBF0F3;color:#7A3A50}  /* Cena Privada */
+.cp-g{background:#EBF5F7;color:#2A6A7A}  /* Global Family */
 
 /* MODAL */
 .mov{position:fixed;inset:0;background:rgba(14,14,14,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px}
@@ -239,6 +243,18 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
 .fg textarea{resize:vertical;min-height:60px;line-height:1.5}
 .mft{padding:12px 26px 20px;display:flex;justify-content:flex-end;gap:8px;border-top:.5px solid var(--bd)}
 .type-hint{font-size:10px;color:var(--muted);margin-top:4px;line-height:1.5;min-height:14px}
+
+/* ── MODAL CHECKLIST PREVIEW ─────────────────────────────── */
+.ck-preview-wrap{margin-top:10px;border:.5px solid var(--bd);border-radius:var(--r);overflow:hidden;display:none;animation:fadeUp .2s ease}
+.ck-preview-hd{padding:7px 12px;background:var(--off);border-bottom:.5px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
+.ck-preview-title{font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);font-weight:500}
+.ck-preview-count{font-size:10px;color:var(--gold);font-weight:600}
+.ck-preview-list{display:flex;flex-direction:column;max-height:160px;overflow-y:auto}
+.ck-preview-item{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:.5px solid var(--bd);font-size:12px;color:var(--muted);transition:background .1s}
+.ck-preview-item:last-child{border-bottom:none}
+.ck-preview-item:hover{background:var(--gf)}
+.ck-preview-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;opacity:.7}
+.ck-preview-note{padding:6px 12px;font-size:10px;color:var(--muted);background:var(--gf);border-top:.5px solid var(--bd);font-style:italic}
 
 /* EMPTY */
 .empty{text-align:center;padding:44px 20px;color:var(--muted)}
@@ -291,6 +307,14 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
       <button class="ni" onclick="goEventsFilter('Lanzamiento')">
         <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7.5 1l1.4 5H14l-4.2 3 1.6 5L7.5 11 3.6 14l1.6-5L1 6h5.1z"/></svg>
         <span data-t="nav_launch"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Cena Privada')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12V7a4.5 4.5 0 019 0v5M1 12h13M7.5 3.5V1M5.5 4.5L4 3M9.5 4.5L11 3"/></svg>
+        <span data-t="nav_dinner"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Global Family')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M2 7.5h11M7.5 2a8 8 0 010 11M7.5 2a8 8 0 000 11"/></svg>
+        <span data-t="nav_gf"></span>
       </button>
       <button class="ni" onclick="goEventsFilter('Campa&#241;a')">
         <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 11.5l4-7 3.5 5 2.5-3 3 5"/></svg>
@@ -366,15 +390,26 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
       <input type="hidden" id="f-id">
       <div class="fr">
         <div class="fg full"><label data-t="f_name"></label><input type="text" id="f-name" placeholder=""></div>
-        <div class="fg">
+        <div class="fg full">
           <label data-t="f_type"></label>
           <select id="f-type" onchange="updateModalType()">
-            <option value="Lanzamiento"  data-t-opt="type_launch"></option>
-            <option value="Campa&#241;a" data-t-opt="type_campaign"></option>
-            <option value="Producci&#243;n" data-t-opt="type_production"></option>
-            <option value="Shooting"     data-t-opt="type_shooting"></option>
+            <option value="Lanzamiento"          data-t-opt="type_launch"></option>
+            <option value="Cena Privada"          data-t-opt="type_dinner"></option>
+            <option value="Global Family"         data-t-opt="type_gf"></option>
+            <option value="Campa&#241;a"          data-t-opt="type_campaign"></option>
+            <option value="Producci&#243;n"       data-t-opt="type_production"></option>
+            <option value="Shooting"              data-t-opt="type_shooting"></option>
           </select>
           <div class="type-hint" id="modal-type-hint"></div>
+          <!-- ── Checklist preview dinámico ───────────── -->
+          <div class="ck-preview-wrap" id="modal-ck-preview">
+            <div class="ck-preview-hd">
+              <span class="ck-preview-title">Tareas predefinidas</span>
+              <span class="ck-preview-count" id="ck-preview-count"></span>
+            </div>
+            <div class="ck-preview-list" id="ck-preview-list"></div>
+            <div class="ck-preview-note">Se cargarán automáticamente al crear el evento. Podés editar la lista después.</div>
+          </div>
         </div>
         <div class="fg"><label data-t="f_status"></label>
           <select id="f-status">
@@ -427,6 +462,7 @@ const TR = {
     nav_general:'General', nav_dashboard:'Dashboard', nav_events:'Eventos', nav_calendar:'Calendario',
     nav_types:'Por tipo', nav_launch:'Lanzamientos', nav_campaign:'Campa\u00f1as',
     nav_production:'Producciones', nav_shooting:'Shootings',
+    nav_dinner:'Cenas Privadas', nav_gf:'Global Family',
     page_dashboard:'Dashboard', page_events:'Eventos', page_calendar:'Calendario',
     btn_export:'\u2193 Exportar', btn_new:'+ Nuevo evento',
     stat_total:'Total eventos', stat_upcoming:'Pr\u00f3ximos 30d', stat_confirmed:'Confirmados', stat_completed:'Completados',
@@ -436,6 +472,7 @@ const TR = {
     alert_in:'Faltan', alert_days:'d\u00edas', alert_tomorrow:'Ma\u00f1ana', alert_today:'Hoy',
     filt_all:'Todos', filt_plan:'Planificando', filt_conf:'Confirmado',
     type_launch:'Lanzamiento', type_campaign:'Campa\u00f1a', type_production:'Producci\u00f3n', type_shooting:'Shooting',
+    type_dinner:'Cena Privada', type_gf:'Global Family',
     s_plan:'Planificando', s_conf:'Confirmado', s_live:'En curso', s_done:'Completado',
     th_event:'Evento', th_type:'Tipo', th_days:'D\u00edas', th_date:'Fecha',
     th_time:'Horario', th_property:'Propiedad', th_guests:'Asistentes', th_status:'Estado',
@@ -467,6 +504,7 @@ const TR = {
     nav_general:'General', nav_dashboard:'Dashboard', nav_events:'Events', nav_calendar:'Calendar',
     nav_types:'By type', nav_launch:'Launches', nav_campaign:'Campaigns',
     nav_production:'Productions', nav_shooting:'Shootings',
+    nav_dinner:'Private Dinners', nav_gf:'Global Family',
     page_dashboard:'Dashboard', page_events:'Events', page_calendar:'Calendar',
     btn_export:'\u2193 Export', btn_new:'+ New event',
     stat_total:'Total events', stat_upcoming:'Next 30d', stat_confirmed:'Confirmed', stat_completed:'Completed',
@@ -476,6 +514,7 @@ const TR = {
     alert_in:'In', alert_days:'days', alert_tomorrow:'Tomorrow', alert_today:'Today',
     filt_all:'All', filt_plan:'Planning', filt_conf:'Confirmed',
     type_launch:'Launch', type_campaign:'Campaign', type_production:'Production', type_shooting:'Shooting',
+    type_dinner:'Private Dinner', type_gf:'Global Family',
     s_plan:'Planning', s_conf:'Confirmed', s_live:'In progress', s_done:'Completed',
     th_event:'Event', th_type:'Type', th_days:'Days', th_date:'Date',
     th_time:'Time', th_property:'Property', th_guests:'Guests', th_status:'Status',
@@ -522,16 +561,41 @@ let monthChart   = null;
 
 // ════════════════════════════════════
 //  CHECKLIST TEMPLATES  [spec §1]
+//  Diccionario maestro: tipo → array de tareas.
+//  updateChecklist() lo consume para inyectar el DOM.
+//  saveEvent() lo usa al crear un nuevo evento.
+//  Nunca se modifica en runtime; los cambios van al array
+//  del evento individual (addCk / delCk).
 // ════════════════════════════════════
 const CHECKLIST_TEMPLATES = {
   'Lanzamiento': [
-    'Confirmar venue y contratos',
-    'Catering y bebidas premium',
-    'Enviar invitaciones / RSVP',
-    'AV y presentaciones',
-    'Prensa y medios invitados',
-    'Se\u00f1al\u00e9tica y branding',
-    'Briefing al equipo on-site',
+    'Setup de branding y señalética en venue',
+    'Coordinación de prensa e invitados VIP',
+    'Prueba de sonido e iluminación',
+    'Confirmar venue y contratos firmados',
+    'Catering y bebidas premium confirmados',
+    'Enviar invitaciones digitales / RSVP',
+    'AV, pantallas y presentaciones on-site',
+    'Briefing completo al equipo de producción',
+  ],
+  'Cena Privada': [
+    'Confirmación de menú con chef / catering',
+    'Asignación y seating plan de mesas',
+    'Protocolo de recepción de invitados',
+    'Ambientación, velas y decoración floral',
+    'Maridaje de vinos confirmado con sommelier',
+    'Briefing al personal de servicio on-site',
+    'Coordinación de transporte / valet parking',
+    'Carta de invitación y dresscode comunicado',
+  ],
+  'Global Family': [
+    'Revisión y firma de contrato con tercero',
+    'Checklist logística base confirmado',
+    'Coordinación con equipo del cliente',
+    'Aprobación de cronograma y hitos',
+    'Control de accesos y acreditaciones',
+    'Alineamiento de branding y comunicación',
+    'Reporte post-evento entregado',
   ],
   'Campa\u00f1a': [
     'Brief creativo aprobado',
@@ -792,8 +856,14 @@ function statusKey(s){ return {Planificando:'plan',Confirmado:'conf','En curso':
 //  BADGES
 // ════════════════════════════════════
 function typeBadge(type){
-  var map={Lanzamiento:'tb tl',Campa\u00f1a:'tb tc',Producci\u00f3n:'tb tp',Shooting:'tb tsh'};
-  var keyMap={Lanzamiento:'type_launch',Campa\u00f1a:'type_campaign',Producci\u00f3n:'type_production',Shooting:'type_shooting'};
+  var map={
+    'Lanzamiento':'tb tl','Campa\u00f1a':'tb tc','Producci\u00f3n':'tb tp','Shooting':'tb tsh',
+    'Cena Privada':'tb tdn','Global Family':'tb tgf'
+  };
+  var keyMap={
+    'Lanzamiento':'type_launch','Campa\u00f1a':'type_campaign','Producci\u00f3n':'type_production','Shooting':'type_shooting',
+    'Cena Privada':'type_dinner','Global Family':'type_gf'
+  };
   var cls=map[type]||'tb';
   return '<span class="'+cls+'">'+( t(keyMap[type])||type )+'</span>';
 }
@@ -812,7 +882,10 @@ function daysBadge(ds){
   return '<span class="db d2">'+n+' '+t('alert_days')+'</span>';
 }
 function typeColor(type){
-  return {Lanzamiento:'#2A4C8A',Campa\u00f1a:'#8A5800',Producci\u00f3n:'#2E6040',Shooting:'#6A3A8A'}[type]||'#888';
+  return {
+    'Lanzamiento':'#2A4C8A','Campa\u00f1a':'#8A5800','Producci\u00f3n':'#2E6040','Shooting':'#6A3A8A',
+    'Cena Privada':'#7A3A50','Global Family':'#2A6A7A'
+  }[type]||'#888';
 }
 
 // ════════════════════════════════════
@@ -916,21 +989,30 @@ function initChart(){
   if(!canvas||typeof Chart==='undefined') return;
   if(monthChart){ monthChart.destroy(); monthChart=null; }
   var months=TR[lang].cal_months.map(function(m){ return m.slice(0,3); });
-  var counts={Lanzamiento:Array(12).fill(0),'Campa\u00f1a':Array(12).fill(0),'Producci\u00f3n':Array(12).fill(0),Shooting:Array(12).fill(0)};
+  var counts={
+    'Lanzamiento':Array(12).fill(0),
+    'Campa\u00f1a':Array(12).fill(0),
+    'Producci\u00f3n':Array(12).fill(0),
+    'Shooting':Array(12).fill(0),
+    'Cena Privada':Array(12).fill(0),
+    'Global Family':Array(12).fill(0),
+  };
   events.forEach(function(e){
     if(!e.date) return;
     var d=new Date(e.date+'T00:00:00');
-    if(d.getFullYear()===calYear&&counts[e.type]) counts[e.type][d.getMonth()]++;
+    if(d.getFullYear()===calYear&&counts[e.type]!==undefined) counts[e.type][d.getMonth()]++;
   });
   monthChart=new Chart(canvas,{
     type:'bar',
     data:{
       labels:months,
       datasets:[
-        {label:t('type_launch'),     data:counts.Lanzamiento,       backgroundColor:'rgba(42,76,138,0.75)',  borderRadius:3,borderSkipped:false},
-        {label:t('type_campaign'),   data:counts['Campa\u00f1a'],   backgroundColor:'rgba(138,88,0,0.75)',   borderRadius:3,borderSkipped:false},
-        {label:t('type_production'), data:counts['Producci\u00f3n'],backgroundColor:'rgba(46,96,64,0.75)',   borderRadius:3,borderSkipped:false},
-        {label:t('type_shooting'),   data:counts.Shooting,          backgroundColor:'rgba(106,58,138,0.75)',borderRadius:3,borderSkipped:false},
+        {label:t('type_launch'),     data:counts['Lanzamiento'],      backgroundColor:'rgba(42,76,138,0.75)',  borderRadius:3,borderSkipped:false},
+        {label:t('type_dinner'),     data:counts['Cena Privada'],     backgroundColor:'rgba(122,58,80,0.75)',  borderRadius:3,borderSkipped:false},
+        {label:t('type_gf'),         data:counts['Global Family'],    backgroundColor:'rgba(42,106,122,0.75)', borderRadius:3,borderSkipped:false},
+        {label:t('type_campaign'),   data:counts['Campa\u00f1a'],     backgroundColor:'rgba(138,88,0,0.75)',   borderRadius:3,borderSkipped:false},
+        {label:t('type_production'), data:counts['Producci\u00f3n'],  backgroundColor:'rgba(46,96,64,0.75)',   borderRadius:3,borderSkipped:false},
+        {label:t('type_shooting'),   data:counts['Shooting'],         backgroundColor:'rgba(106,58,138,0.75)',borderRadius:3,borderSkipped:false},
       ]
     },
     options:{
@@ -957,11 +1039,13 @@ function renderFilters(){
   }
   var srchVal=(document.getElementById('srch-input')||{}).value||'';
   row.innerHTML=
-    chip(t('filt_all'),       filterType==='Todos'&&!filterStatus,"setFilter('Todos',null)")
-    +chip(t('type_launch'),   filterType==='Lanzamiento',         "setFilter('Lanzamiento',null)")
-    +chip(t('type_campaign'), filterType==='Campa\u00f1a',        "setFilter('Campa\u00f1a',null)")
-    +chip(t('type_production'),filterType==='Producci\u00f3n',    "setFilter('Producci\u00f3n',null)")
-    +chip(t('type_shooting'),  filterType==='Shooting',           "setFilter('Shooting',null)")
+    chip(t('filt_all'),         filterType==='Todos'&&!filterStatus,"setFilter('Todos',null)")
+    +chip(t('type_launch'),     filterType==='Lanzamiento',          "setFilter('Lanzamiento',null)")
+    +chip(t('type_dinner'),     filterType==='Cena Privada',         "setFilter('Cena Privada',null)")
+    +chip(t('type_gf'),         filterType==='Global Family',        "setFilter('Global Family',null)")
+    +chip(t('type_campaign'),   filterType==='Campa\u00f1a',         "setFilter('Campa\u00f1a',null)")
+    +chip(t('type_production'), filterType==='Producci\u00f3n',      "setFilter('Producci\u00f3n',null)")
+    +chip(t('type_shooting'),   filterType==='Shooting',             "setFilter('Shooting',null)")
     +chip(t('s_plan'), filterStatus==='Planificando',"setFilter(null,'Planificando')")
     +chip(t('s_conf'), filterStatus==='Confirmado',  "setFilter(null,'Confirmado')")
     +'<input type="text" class="srch" id="srch-input" placeholder="'+t('search_ph')+'" oninput="renderTable()" value="'+srchVal+'">';
@@ -1112,7 +1196,10 @@ function renderCalendar(){
   for(var i=1;i<=daysInMonth;i++) cells.push({day:i,cur:true});
   while(cells.length%7!==0) cells.push({day:cells.length-daysInMonth-firstDay+1,cur:false});
 
-  var pillClass={Lanzamiento:'cp-l','Campa\u00f1a':'cp-c','Producci\u00f3n':'cp-p',Shooting:'cp-s'};
+  var pillClass={
+    'Lanzamiento':'cp-l','Campa\u00f1a':'cp-c','Producci\u00f3n':'cp-p','Shooting':'cp-s',
+    'Cena Privada':'cp-d','Global Family':'cp-g'
+  };
 
   var wrap=document.getElementById('cal-grid-wrap');
   wrap.innerHTML=
@@ -1303,13 +1390,52 @@ function openModal(editData){
   updateModalType();
 }
 
+// ════════════════════════════════════
+//  updateChecklist(eventType)
+//  Limpia el preview del modal e inyecta las tareas
+//  predefinidas del template seleccionado.
+//  No modifica CHECKLIST_TEMPLATES — sólo lee de él.
+// ════════════════════════════════════
+function updateChecklist(eventType){
+  var tasks   = CHECKLIST_TEMPLATES[eventType] || [];
+  var wrap    = document.getElementById('modal-ck-preview');
+  var list    = document.getElementById('ck-preview-list');
+  var counter = document.getElementById('ck-preview-count');
+  if(!wrap || !list || !counter) return;
+
+  // Sin tareas → ocultar panel
+  if(!tasks.length){
+    wrap.style.display = 'none';
+    list.innerHTML = '';
+    counter.textContent = '';
+    return;
+  }
+
+  // Limpiar contenedor y regenerar items
+  list.innerHTML = '';
+  tasks.forEach(function(text){
+    var item = document.createElement('div');
+    item.className = 'ck-preview-item';
+    item.innerHTML = '<span class="ck-preview-dot"></span><span>'+text+'</span>';
+    list.appendChild(item);
+  });
+
+  counter.textContent = tasks.length + ' tareas';
+  wrap.style.display  = 'block';
+}
+
+// Alias llamado por el onchange del <select> y por openModal()
 function updateModalType(){
-  var type=document.getElementById('f-type').value;
-  var tasks=CHECKLIST_TEMPLATES[type]||[];
-  var hint=document.getElementById('modal-type-hint');
-  if(!hint) return;
-  if(!tasks.length){ hint.textContent=''; return; }
-  hint.textContent=tasks.length+' tareas: '+tasks.slice(0,2).join(', ')+(tasks.length>2?'\u2026':'');
+  var type  = document.getElementById('f-type').value;
+  var tasks = CHECKLIST_TEMPLATES[type] || [];
+  var hint  = document.getElementById('modal-type-hint');
+  if(hint){
+    hint.textContent = tasks.length
+      ? tasks.length + ' tareas: ' + tasks.slice(0,2).join(', ') + (tasks.length > 2 ? '\u2026' : '')
+      : '';
+  }
+  // Inyectar preview dinámico en el DOM del modal
+  updateChecklist(type);
 }
 
 function closeModal(){ document.getElementById('modal-ov').style.display='none'; }
