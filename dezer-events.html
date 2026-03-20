@@ -171,6 +171,13 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
 .if label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:3px;display:block}
 .if p{font-size:13px;font-weight:500}
 
+.ck-item.crossed .ckt{text-decoration:line-through;color:var(--muted);opacity:.6}
+.ck-tachar{background:none;border:none;cursor:pointer;color:var(--muted);font-size:14px;padding:0 3px;opacity:0;transition:opacity .15s;line-height:1;font-weight:700}
+.ck-item:hover .ck-tachar{opacity:1}
+.ck-tachar:hover{color:var(--black)}
+.ck-tachar.tachar-active{opacity:1;color:var(--black)}
+.tacha{text-decoration:line-through;color:var(--muted)}
+
 /* CHECKLIST */
 .ck-prog{height:3px;background:var(--off);border-radius:2px;margin-bottom:14px;overflow:hidden}
 .ck-bar{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease}
@@ -304,29 +311,49 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
         <span data-t="nav_calendar"></span>
       </button>
       <span class="nlbl" data-t="nav_types"></span>
-      <button class="ni" onclick="goEventsFilter('Lanzamiento')">
-        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7.5 1l1.4 5H14l-4.2 3 1.6 5L7.5 11 3.6 14l1.6-5L1 6h5.1z"/></svg>
-        <span data-t="nav_launch"></span>
+      <button class="ni" onclick="goEventsFilter('Cena Privada Agentes')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12V7a4.5 4.5 0 019 0v5M1 12h13M7.5 3.5V1M5.5 4.5L4 3M9.5 4.5L11 3"/></svg>
+        <span data-t="nav_cpa"></span>
       </button>
       <button class="ni" onclick="goEventsFilter('Cena Privada')">
-        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12V7a4.5 4.5 0 019 0v5M1 12h13M7.5 3.5V1M5.5 4.5L4 3M9.5 4.5L11 3"/></svg>
-        <span data-t="nav_dinner"></span>
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 12V7a4.5 4.5 0 019 0v5M1 12h13"/></svg>
+        <span data-t="nav_cp"></span>
       </button>
-      <button class="ni" onclick="goEventsFilter('Global Family')">
-        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M2 7.5h11M7.5 2a8 8 0 010 11M7.5 2a8 8 0 000 11"/></svg>
-        <span data-t="nav_gf"></span>
+      <button class="ni" onclick="goEventsFilter('Meeting')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="3" width="13" height="10" rx="1.2"/><path d="M5 3V1.5M10 3V1.5M1 7h13"/></svg>
+        <span data-t="nav_meet"></span>
       </button>
-      <button class="ni" onclick="goEventsFilter('Campa&#241;a')">
+      <button class="ni" onclick="goEventsFilter('Entrevista')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="4.5" r="2.5"/><path d="M2.5 13c0-2.76 2.24-5 5-5s5 2.24 5 5"/></svg>
+        <span data-t="nav_entrev"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Cocktail')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M2 2h11l-5 6v5M5 13h5"/></svg>
+        <span data-t="nav_cock"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Brunch Agentes')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="7.5" r="4"/><path d="M7.5 1v2M7.5 12v2M1 7.5h2M12 7.5h2"/></svg>
+        <span data-t="nav_brunch"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Broker Presentation')">
         <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M1 11.5l4-7 3.5 5 2.5-3 3 5"/></svg>
-        <span data-t="nav_campaign"></span>
+        <span data-t="nav_broker"></span>
       </button>
-      <button class="ni" onclick="goEventsFilter('Producci&#243;n')">
+      <button class="ni" onclick="goEventsFilter('Evento Privado Agentes')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7.5 1l1.4 5H14l-4.2 3 1.6 5L7.5 11 3.6 14l1.6-5L1 6h5.1z"/></svg>
+        <span data-t="nav_epa"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Evento IP')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M2 7.5h11M7.5 2a8 8 0 010 11M7.5 2a8 8 0 000 11"/></svg>
+        <span data-t="nav_eip"></span>
+      </button>
+      <button class="ni" onclick="goEventsFilter('Eventos Marcas')">
         <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="4" width="13" height="9" rx="1"/><path d="M5 4V2.5a2.5 2.5 0 015 0V4"/></svg>
-        <span data-t="nav_production"></span>
+        <span data-t="nav_emarcas"></span>
       </button>
-      <button class="ni" onclick="goEventsFilter('Shooting')">
-        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 1v1.5M7.5 12.5V14M1 7.5h1.5M12.5 7.5H14"/></svg>
-        <span data-t="nav_shooting"></span>
+      <button class="ni" onclick="goEventsFilter('Evento Flia Dezer')">
+        <svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7.5 1C5 1 3 3 3 5.5c0 3.5 4.5 8.5 4.5 8.5S12 9 12 5.5C12 3 10 1 7.5 1z"/></svg>
+        <span data-t="nav_eflia"></span>
       </button>
     </nav>
     <div class="sb-bottom">
@@ -393,12 +420,17 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
         <div class="fg full">
           <label data-t="f_type"></label>
           <select id="f-type" onchange="updateModalType()">
-            <option value="Lanzamiento"          data-t-opt="type_launch"></option>
-            <option value="Cena Privada"          data-t-opt="type_dinner"></option>
-            <option value="Global Family"         data-t-opt="type_gf"></option>
-            <option value="Campa&#241;a"          data-t-opt="type_campaign"></option>
-            <option value="Producci&#243;n"       data-t-opt="type_production"></option>
-            <option value="Shooting"              data-t-opt="type_shooting"></option>
+            <option value="Cena Privada Agentes">Cena Privada Agentes</option>
+            <option value="Cena Privada">Cena Privada</option>
+            <option value="Meeting">Meeting</option>
+            <option value="Entrevista">Entrevista</option>
+            <option value="Cocktail">Cocktail</option>
+            <option value="Brunch Agentes">Brunch Agentes</option>
+            <option value="Broker Presentation">Broker Presentation</option>
+            <option value="Evento Privado Agentes">Evento Privado Agentes</option>
+            <option value="Evento IP">Evento IP</option>
+            <option value="Eventos Marcas">Eventos Marcas</option>
+            <option value="Evento Flia Dezer">Evento Flia Dezer</option>
           </select>
           <div class="type-hint" id="modal-type-hint"></div>
           <!-- ── Checklist preview dinámico ───────────── -->
@@ -420,7 +452,9 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
           </select>
         </div>
         <div class="fg"><label data-t="f_date"></label><input type="date" id="f-date"></div>
-        <div class="fg"><label data-t="f_time"></label><input type="time" id="f-time"></div>
+        <div class="fg"><label data-t="f_time_open"></label><input type="time" id="f-time-open"></div>
+        <div class="fg"><label data-t="f_time_close"></label><input type="time" id="f-time-close"></div>
+        <div class="fg" style="display:none"><label data-t="f_time"></label><input type="time" id="f-time"></div>
         <div class="fg full"><label data-t="f_property"></label>
           <select id="f-property">
             <option value="" data-t-opt="f_prop_sel"></option>
@@ -460,9 +494,12 @@ td{padding:12px 15px;font-size:13px;vertical-align:middle}
 const TR = {
   es: {
     nav_general:'General', nav_dashboard:'Dashboard', nav_events:'Eventos', nav_calendar:'Calendario',
-    nav_types:'Por tipo', nav_launch:'Lanzamientos', nav_campaign:'Campa\u00f1as',
-    nav_production:'Producciones', nav_shooting:'Shootings',
-    nav_dinner:'Cenas Privadas', nav_gf:'Global Family',
+    nav_types:'Por tipo',
+    nav_cpa:'Cenas Privadas Agentes', nav_cp:'Cenas Privadas',
+    nav_meet:'Meetings', nav_entrev:'Entrevistas',
+    nav_cock:'Cocktails', nav_brunch:'Brunch Agentes',
+    nav_broker:'Broker Presentation', nav_epa:'Evento Privado Agentes',
+    nav_eip:'Evento IP', nav_emarcas:'Eventos Marcas', nav_eflia:'Evento Flia Dezer',
     page_dashboard:'Dashboard', page_events:'Eventos', page_calendar:'Calendario',
     btn_export:'\u2193 Exportar', btn_new:'+ Nuevo evento',
     stat_total:'Total eventos', stat_upcoming:'Pr\u00f3ximos 30d', stat_confirmed:'Confirmados', stat_completed:'Completados',
@@ -471,8 +508,11 @@ const TR = {
     sec_alerts:'Recordatorios activos', sec_chart:'Eventos por mes', sec_upcoming:'Pr\u00f3ximos eventos',
     alert_in:'Faltan', alert_days:'d\u00edas', alert_tomorrow:'Ma\u00f1ana', alert_today:'Hoy',
     filt_all:'Todos', filt_plan:'Planificando', filt_conf:'Confirmado',
-    type_launch:'Lanzamiento', type_campaign:'Campa\u00f1a', type_production:'Producci\u00f3n', type_shooting:'Shooting',
-    type_dinner:'Cena Privada', type_gf:'Global Family',
+    type_cpa:'Cena Privada Agentes', type_cp:'Cena Privada',
+    type_meet:'Meeting', type_entrev:'Entrevista',
+    type_cock:'Cocktail', type_brunch:'Brunch Agentes',
+    type_broker:'Broker Presentation', type_epa:'Evento Privado Agentes',
+    type_eip:'Evento IP', type_emarcas:'Eventos Marcas', type_eflia:'Evento Flia Dezer',
     s_plan:'Planificando', s_conf:'Confirmado', s_live:'En curso', s_done:'Completado',
     th_event:'Evento', th_type:'Tipo', th_days:'D\u00edas', th_date:'Fecha',
     th_time:'Horario', th_property:'Propiedad', th_guests:'Asistentes', th_status:'Estado',
@@ -491,7 +531,8 @@ const TR = {
     cal_dow:['Dom','Lun','Mar','Mi\u00e9','Jue','Vie','S\u00e1b'],
     modal_new:'Nuevo Evento', modal_edit:'Editar Evento', modal_sub:'Complet\u00e1 los datos del evento',
     f_name:'Nombre del evento', f_type:'Tipo', f_status:'Estado', f_date:'Fecha',
-    f_time:'Horario', f_property:'Propiedad / Venue', f_guests:'Asistentes estimados',
+    f_time:'Horario', f_time_open:'Apertura', f_time_close:'Cierre',
+    f_property:'Propiedad / Venue', f_guests:'Asistentes estimados',
     f_owner:'Responsable', f_reminder:'Recordatorio', f_notes:'Notas internas',
     f_prop_sel:'Seleccionar propiedad...', f_prop_other:'Otro / TBD',
     r_none:'Sin recordatorio', r_1:'1 d\u00eda antes', r_3:'3 d\u00edas antes', r_7:'7 d\u00edas antes',
@@ -502,9 +543,12 @@ const TR = {
   },
   en: {
     nav_general:'General', nav_dashboard:'Dashboard', nav_events:'Events', nav_calendar:'Calendar',
-    nav_types:'By type', nav_launch:'Launches', nav_campaign:'Campaigns',
-    nav_production:'Productions', nav_shooting:'Shootings',
-    nav_dinner:'Private Dinners', nav_gf:'Global Family',
+    nav_types:'By type',
+    nav_cpa:'Agent Private Dinners', nav_cp:'Private Dinners',
+    nav_meet:'Meetings', nav_entrev:'Interviews',
+    nav_cock:'Cocktails', nav_brunch:'Agent Brunch',
+    nav_broker:'Broker Presentation', nav_epa:'Private Agent Event',
+    nav_eip:'IP Event', nav_emarcas:'Brand Events', nav_eflia:'Dezer Family Event',
     page_dashboard:'Dashboard', page_events:'Events', page_calendar:'Calendar',
     btn_export:'\u2193 Export', btn_new:'+ New event',
     stat_total:'Total events', stat_upcoming:'Next 30d', stat_confirmed:'Confirmed', stat_completed:'Completed',
@@ -513,11 +557,15 @@ const TR = {
     sec_alerts:'Active reminders', sec_chart:'Events by month', sec_upcoming:'Upcoming events',
     alert_in:'In', alert_days:'days', alert_tomorrow:'Tomorrow', alert_today:'Today',
     filt_all:'All', filt_plan:'Planning', filt_conf:'Confirmed',
-    type_launch:'Launch', type_campaign:'Campaign', type_production:'Production', type_shooting:'Shooting',
-    type_dinner:'Private Dinner', type_gf:'Global Family',
+    type_cpa:'Agent Private Dinner', type_cp:'Private Dinner',
+    type_meet:'Meeting', type_entrev:'Interview',
+    type_cock:'Cocktail', type_brunch:'Agent Brunch',
+    type_broker:'Broker Presentation', type_epa:'Private Agent Event',
+    type_eip:'IP Event', type_emarcas:'Brand Events', type_eflia:'Dezer Family Event',
     s_plan:'Planning', s_conf:'Confirmed', s_live:'In progress', s_done:'Completed',
     th_event:'Event', th_type:'Type', th_days:'Days', th_date:'Date',
-    th_time:'Time', th_property:'Property', th_guests:'Guests', th_status:'Status',
+    th_time:'Time', th_time_open:'Opens', th_time_close:'Closes',
+    th_property:'Property', th_guests:'Guests', th_status:'Status',
     day_today:'Today', day_tomorrow:'Tomorrow', day_past:'days ago',
     dtab_info:'Info', dtab_ck:'Checklist', dtab_notes:'Notes', dtab_hist:'History',
     ck_progress:'tasks completed', ck_empty:'No tasks yet.',
@@ -533,7 +581,8 @@ const TR = {
     cal_dow:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
     modal_new:'New Event', modal_edit:'Edit Event', modal_sub:'Fill in the event details',
     f_name:'Event name', f_type:'Type', f_status:'Status', f_date:'Date',
-    f_time:'Time', f_property:'Property / Venue', f_guests:'Estimated guests',
+    f_time:'Time', f_time_open:'Opens', f_time_close:'Closes',
+    f_property:'Property / Venue', f_guests:'Estimated guests',
     f_owner:'Owner', f_reminder:'Reminder', f_notes:'Internal notes',
     f_prop_sel:'Select property...', f_prop_other:'Other / TBD',
     r_none:'No reminder', r_1:'1 day before', r_3:'3 days before', r_7:'7 days before',
@@ -568,61 +617,161 @@ let monthChart   = null;
 //  del evento individual (addCk / delCk).
 // ════════════════════════════════════
 const CHECKLIST_TEMPLATES = {
-  'Lanzamiento': [
-    'Setup de branding y señalética en venue',
-    'Coordinación de prensa e invitados VIP',
-    'Prueba de sonido e iluminación',
-    'Confirmar venue y contratos firmados',
-    'Catering y bebidas premium confirmados',
-    'Enviar invitaciones digitales / RSVP',
-    'AV, pantallas y presentaciones on-site',
-    'Briefing completo al equipo de producción',
+  'Cena Privada Agentes': [
+    'Decidir el men\u00fa con la chef',
+    'Imprimir men\u00fa',
+    'Saber alergias de los invitados',
+    'Contabilizar los platos, vasos y cubiertos',
+    'Chequear el dishwasher (limpio y vac\u00edo)',
+    'Compra de still water y sparkling',
+    'Compra de bebida con alcohol',
+    'Poner a enfriar la bebida ese d\u00eda',
+    'Cargar las luces',
+    'Cargar las velas',
+    'Coordinar con housekeeping (hora y qui\u00e9n viene)',
+    'Hablar con el bar (qui\u00e9n viene)',
+    'Coordinar con front desk (qui\u00e9n viene)',
+    'Valet',
   ],
   'Cena Privada': [
-    'Confirmación de menú con chef / catering',
-    'Asignación y seating plan de mesas',
-    'Protocolo de recepción de invitados',
-    'Ambientación, velas y decoración floral',
-    'Maridaje de vinos confirmado con sommelier',
-    'Briefing al personal de servicio on-site',
-    'Coordinación de transporte / valet parking',
-    'Carta de invitación y dresscode comunicado',
+    'Decidir el men\u00fa con la chef',
+    'Imprimir men\u00fa',
+    'Saber alergias de los invitados',
+    'Contabilizar los platos, vasos y cubiertos',
+    'Chequear el dishwasher (limpio y vac\u00edo)',
+    'Compra de still water y sparkling',
+    'Compra de bebida con alcohol',
+    'Poner a enfriar la bebida ese d\u00eda',
+    'Cargar las luces',
+    'Cargar las velas',
+    'Coordinar con housekeeping (hora y qui\u00e9n viene)',
+    'Hablar con el bar (qui\u00e9n viene)',
+    'Coordinar con front desk (qui\u00e9n viene)',
+    'Valet',
   ],
-  'Global Family': [
-    'Revisión y firma de contrato con tercero',
-    'Checklist logística base confirmado',
-    'Coordinación con equipo del cliente',
-    'Aprobación de cronograma y hitos',
-    'Control de accesos y acreditaciones',
-    'Alineamiento de branding y comunicación',
-    'Reporte post-evento entregado',
+  'Meeting': [
+    'Chequear d\u00f3nde se hace',
+    'Confirmar horarios',
+    'Notificar los agentes para reservar el conference',
+    'Walkthrough',
+    'Avisarle a housekeeping el d\u00eda antes',
   ],
-  'Campa\u00f1a': [
-    'Brief creativo aprobado',
-    'Definir objetivos y KPIs',
-    'Confirmar presupuesto',
-    'Materiales de comunicaci\u00f3n listos',
-    'Lista de contactos / leads',
-    'Distribuci\u00f3n en canales digitales',
-    'Seguimiento post-campa\u00f1a',
+  'Entrevista': [
+    'Chequear d\u00f3nde se hace',
+    'Confirmar horarios',
+    'Notificar los agentes para reservar el conference',
+    'Walkthrough',
+    'Avisarle a housekeeping el d\u00eda antes',
   ],
-  'Producci\u00f3n': [
-    'Location scouting confirmado',
-    'Contratar crew t\u00e9cnico',
-    'Listado y reserva de equipamiento',
-    'Cronograma de producci\u00f3n aprobado',
-    'Permisos y seguros gestionados',
-    'Ensayo / preproducci\u00f3n',
-    'Entrega y control de calidad',
+  'Cocktail': [
+    'Cargar luces',
+    'Catering',
+    'Flores — ordenar',
+    'Velas — cargar',
+    'Valet',
+    'Housekeeping (confirmar qui\u00e9n viene y horario)',
+    'Bar (confirmar qui\u00e9n viene y horario)',
+    'Front desk (confirmar qui\u00e9n viene y horario)',
+    'Confirmar alergias',
+    'Lista de invitados — imprimir',
+    'Seguridad',
+    'Bebidas a enfriar',
+    'Comprar bebidas',
+    'Rentar sillas/mesas',
+    'DJ',
+    'Show',
   ],
-  'Shooting': [
-    'Brief fotogr\u00e1fico / storyboard',
-    'Moodboard aprobado por cliente',
-    'Confirmar modelos / talentos',
-    'Location scouting y reserva',
-    'Set design, props y decorado',
-    'Equipamiento fotogr\u00e1fico / video',
-    'Selecci\u00f3n, retoque y entrega de im\u00e1genes',
+  'Brunch Agentes': [
+    'Comprar Costco',
+    'Comprar Publix',
+    'Catering',
+    'Crear 2 cocktails',
+    'Comprar bebidas',
+    'Enfriar bebidas',
+    'Cargar luces',
+    'Cargar velas',
+  ],
+  'Broker Presentation': [
+    'Comprar Costco',
+    'Comprar Publix',
+    'Catering',
+    'Crear 2 cocktails',
+    'Comprar bebidas',
+    'Enfriar bebidas',
+    'Cargar luces',
+    'Cargar velas',
+  ],
+  'Evento Privado Agentes': [
+    'Cargar luces',
+    'Catering',
+    'Flores — ordenar',
+    'Velas — cargar',
+    'Valet',
+    'Housekeeping (confirmar qui\u00e9n viene y horario)',
+    'Bar (confirmar qui\u00e9n viene y horario)',
+    'Front desk (confirmar qui\u00e9n viene y horario)',
+    'Confirmar alergias',
+    'Lista de invitados — imprimir',
+    'Seguridad',
+    'Bebidas a enfriar',
+    'Comprar bebidas',
+    'Rentar sillas/mesas',
+    'DJ',
+    'Show',
+  ],
+  'Evento IP': [
+    'Cargar luces',
+    'Catering',
+    'Flores — ordenar',
+    'Velas — cargar',
+    'Valet',
+    'Housekeeping (confirmar qui\u00e9n viene y horario)',
+    'Bar (confirmar qui\u00e9n viene y horario)',
+    'Front desk (confirmar qui\u00e9n viene y horario)',
+    'Confirmar alergias',
+    'Lista de invitados — imprimir',
+    'Seguridad',
+    'Bebidas a enfriar',
+    'Comprar bebidas',
+    'Rentar sillas/mesas',
+    'DJ',
+    'Show',
+  ],
+  'Eventos Marcas': [
+    'Cargar luces',
+    'Catering',
+    'Flores — ordenar',
+    'Velas — cargar',
+    'Valet',
+    'Housekeeping (confirmar qui\u00e9n viene y horario)',
+    'Bar (confirmar qui\u00e9n viene y horario)',
+    'Front desk (confirmar qui\u00e9n viene y horario)',
+    'Confirmar alergias',
+    'Lista de invitados — imprimir',
+    'Seguridad',
+    'Bebidas a enfriar',
+    'Comprar bebidas',
+    'Rentar sillas/mesas',
+    'DJ',
+    'Show',
+  ],
+  'Evento Flia Dezer': [
+    'Cargar luces',
+    'Catering',
+    'Flores — ordenar',
+    'Velas — cargar',
+    'Valet',
+    'Housekeeping (confirmar qui\u00e9n viene y horario)',
+    'Bar (confirmar qui\u00e9n viene y horario)',
+    'Front desk (confirmar qui\u00e9n viene y horario)',
+    'Confirmar alergias',
+    'Lista de invitados — imprimir',
+    'Seguridad',
+    'Bebidas a enfriar',
+    'Comprar bebidas',
+    'Rentar sillas/mesas',
+    'DJ',
+    'Show',
   ],
 };
 
@@ -630,56 +779,74 @@ const CHECKLIST_TEMPLATES = {
 //  SEED DATA
 // ════════════════════════════════════
 const SEED = [
-  {id:1,name:'Lanzamiento Bentley Residences',type:'Lanzamiento',date:'2026-03-25',time:'19:00',
-   property:'Bentley Residences \u2014 Sunny Isles Beach',guests:'200',status:'Confirmado',owner:'Gil Dezer',
-   notes:'Prensa invitada. Can\u00e1pes y open bar premium.',reminder:7,
-   checklist:[{id:1,text:'Confirmar venue y contratos',done:true},{id:2,text:'Catering y bebidas premium',done:true},
-     {id:3,text:'Enviar invitaciones / RSVP',done:true},{id:4,text:'AV y presentaciones',done:false},
-     {id:5,text:'Prensa y medios invitados',done:false},{id:6,text:'Se\u00f1al\u00e9tica y branding',done:false}],
-   quickNote:'Confirmar acceso prensa con Gil el lunes.',
-   history:[{ts:'2026-03-01T10:00:00',action:'created'},{ts:'2026-03-12T14:20:00',action:'edited'}]},
+  {id:1,name:'Cena Anual Agentes Top',type:'Cena Privada Agentes',date:'2026-03-25',time:'20:00',timeOpen:'19:30',timeClose:'23:00',
+   property:'Bentley Residences \u2014 Sunny Isles Beach',guests:'30',status:'Confirmado',owner:'Lucila',
+   notes:'Confirmar alergias con todos los agentes.',reminder:7,
+   checklist:[
+     {id:1,text:'Decidir el men\u00fa con la chef',done:true,crossed:false},
+     {id:2,text:'Imprimir men\u00fa',done:true,crossed:false},
+     {id:3,text:'Saber alergias de los invitados',done:false,crossed:false},
+     {id:4,text:'Cargar las luces',done:false,crossed:false},
+     {id:5,text:'Valet',done:false,crossed:false}],
+   quickNote:'',
+   history:[{ts:'2026-03-01T10:00:00',action:'created'}]},
 
-  {id:2,name:'Campa\u00f1a Q1 \u2014 Investor Night',type:'Campa\u00f1a',date:'2026-04-05',time:'18:30',
-   property:'Porsche Design Tower \u2014 Sunny Isles Beach',guests:'60',status:'Planificando',owner:'Sarah M.',
-   notes:'Segmento: brokers top y family offices.',reminder:3,
-   checklist:[{id:1,text:'Brief creativo aprobado',done:true},{id:2,text:'Definir objetivos y KPIs',done:true},
-     {id:3,text:'Materiales de comunicaci\u00f3n listos',done:false},{id:4,text:'Lista de contactos / leads',done:false},
-     {id:5,text:'Distribuci\u00f3n en canales digitales',done:false}],
+  {id:2,name:'Broker Presentation Rosewood',type:'Broker Presentation',date:'2026-04-05',time:'10:00',timeOpen:'09:30',timeClose:'13:00',
+   property:'Rosewood Residences \u2014 Hillsboro Beach',guests:'50',status:'Planificando',owner:'Sarah M.',
+   notes:'Presentaci\u00f3n para brokers certificados.',reminder:3,
+   checklist:[
+     {id:1,text:'Comprar Costco',done:false,crossed:false},
+     {id:2,text:'Comprar Publix',done:false,crossed:false},
+     {id:3,text:'Catering',done:false,crossed:false},
+     {id:4,text:'Crear 2 cocktails',done:false,crossed:false}],
    quickNote:'',
    history:[{ts:'2026-03-05T09:00:00',action:'created'}]},
 
-  {id:3,name:'Shooting Armani/Casa \u2014 Im\u00e1genes Premium',type:'Shooting',date:'2026-04-12',time:'08:00',
-   property:'Residences by Armani/Casa \u2014 Sunny Isles Beach',guests:'12',status:'Confirmado',owner:'Ana R.',
-   notes:'Sesi\u00f3n para brochure y redes. Dress code: all white.',reminder:3,
-   checklist:[{id:1,text:'Brief fotogr\u00e1fico / storyboard',done:true},{id:2,text:'Moodboard aprobado por cliente',done:true},
-     {id:3,text:'Confirmar modelos / talentos',done:true},{id:4,text:'Set design, props y decorado',done:false},
-     {id:5,text:'Equipamiento fotogr\u00e1fico / video',done:false},{id:6,text:'Selecci\u00f3n, retoque y entrega de im\u00e1genes',done:false}],
-   quickNote:'Confirmar floristería el viernes.',
+  {id:3,name:'Cocktail Armani Residences',type:'Cocktail',date:'2026-04-20',time:'18:00',timeOpen:'17:30',timeClose:'21:00',
+   property:'Residences by Armani/Casa \u2014 Sunny Isles Beach',guests:'80',status:'Confirmado',owner:'Ana R.',
+   notes:'Evento de networking para residentes.',reminder:3,
+   checklist:[
+     {id:1,text:'Cargar luces',done:true,crossed:false},
+     {id:2,text:'Catering',done:true,crossed:false},
+     {id:3,text:'Flores \u2014 ordenar',done:false,crossed:false},
+     {id:4,text:'Lista de invitados \u2014 imprimir',done:false,crossed:false},
+     {id:5,text:'Seguridad',done:false,crossed:false}],
+   quickNote:'Confirmar flores el viernes.',
    history:[{ts:'2026-03-02T11:00:00',action:'created'}]},
 
-  {id:4,name:'Producci\u00f3n Open House Rosewood',type:'Producci\u00f3n',date:'2026-05-10',time:'11:00',
-   property:'Rosewood Residences \u2014 Hillsboro Beach',guests:'120',status:'Planificando',owner:'Mark T.',
-   notes:'',reminder:7,
-   checklist:[{id:1,text:'Location scouting confirmado',done:false},{id:2,text:'Contratar crew t\u00e9cnico',done:false},
-     {id:3,text:'Listado y reserva de equipamiento',done:false},{id:4,text:'Cronograma de producci\u00f3n aprobado',done:false},
-     {id:5,text:'Permisos y seguros gestionados',done:false}],
+  {id:4,name:'Meeting Equipo Ventas Q2',type:'Meeting',date:'2026-04-10',time:'09:00',timeOpen:'08:45',timeClose:'11:00',
+   property:'Porsche Design Tower \u2014 Sunny Isles Beach',guests:'15',status:'Planificando',owner:'Mark T.',
+   notes:'',reminder:1,
+   checklist:[
+     {id:1,text:'Chequear d\u00f3nde se hace',done:false,crossed:false},
+     {id:2,text:'Confirmar horarios',done:false,crossed:false},
+     {id:3,text:'Notificar los agentes para reservar el conference',done:false,crossed:false},
+     {id:4,text:'Walkthrough',done:false,crossed:false},
+     {id:5,text:'Avisarle a housekeeping el d\u00eda antes',done:false,crossed:false}],
    quickNote:'',
    history:[{ts:'2026-03-08T14:00:00',action:'created'}]},
 
-  {id:5,name:'Campa\u00f1a Brokers Miami \u2014 Q4',type:'Campa\u00f1a',date:'2026-02-28',time:'17:00',
-   property:'Hyde Midtown Suites \u2014 Miami',guests:'90',status:'Completado',owner:'Sarah M.',
-   notes:'Evento recurrente trimestral.',reminder:0,
-   checklist:[{id:1,text:'Brief creativo aprobado',done:true},{id:2,text:'Definir objetivos y KPIs',done:true},
-     {id:3,text:'Materiales de comunicaci\u00f3n listos',done:true},{id:4,text:'Lista de contactos / leads',done:true},
-     {id:5,text:'Seguimiento post-campa\u00f1a',done:true}],
+  {id:5,name:'Brunch Agentes Uptown',type:'Brunch Agentes',date:'2026-05-15',time:'11:00',timeOpen:'10:30',timeClose:'14:00',
+   property:'Uptown Harbour \u2014 Miami',guests:'40',status:'Planificando',owner:'Lucila',
+   notes:'Evento trimestral para agentes.',reminder:7,
+   checklist:[
+     {id:1,text:'Comprar Costco',done:false,crossed:false},
+     {id:2,text:'Comprar Publix',done:false,crossed:false},
+     {id:3,text:'Catering',done:false,crossed:false},
+     {id:4,text:'Cargar luces',done:false,crossed:false},
+     {id:5,text:'Cargar velas',done:false,crossed:false}],
    quickNote:'',
-   history:[{ts:'2026-02-01T10:00:00',action:'created'},{ts:'2026-02-25T09:00:00',action:'status',val:'Completado'}]},
+   history:[{ts:'2026-03-10T10:00:00',action:'created'}]},
 
-  {id:6,name:'Lanzamiento Uptown Harbour',type:'Lanzamiento',date:'2026-06-18',time:'17:00',
-   property:'Uptown Harbour \u2014 Miami',guests:'80',status:'Planificando',owner:'Tom W.',
-   notes:'Solo para brokers certificados.',reminder:7,
-   checklist:[{id:1,text:'Confirmar venue y contratos',done:false},{id:2,text:'Enviar invitaciones / RSVP',done:false},
-     {id:3,text:'Prensa y medios invitados',done:false},{id:4,text:'Se\u00f1al\u00e9tica y branding',done:false}],
+  {id:6,name:'Evento Familia Dezer \u2014 Aniversario',type:'Evento Flia Dezer',date:'2026-06-01',time:'19:00',timeOpen:'18:30',timeClose:'23:59',
+   property:'Bentley Residences \u2014 Sunny Isles Beach',guests:'60',status:'Planificando',owner:'Gil Dezer',
+   notes:'Evento privado familiar.',reminder:7,
+   checklist:[
+     {id:1,text:'Cargar luces',done:false,crossed:false},
+     {id:2,text:'Catering',done:false,crossed:false},
+     {id:3,text:'Flores \u2014 ordenar',done:false,crossed:false},
+     {id:4,text:'Seguridad',done:false,crossed:false},
+     {id:5,text:'DJ',done:false,crossed:false}],
    quickNote:'',
    history:[{ts:'2026-03-10T10:00:00',action:'created'}]},
 ];
@@ -856,16 +1023,20 @@ function statusKey(s){ return {Planificando:'plan',Confirmado:'conf','En curso':
 //  BADGES
 // ════════════════════════════════════
 function typeBadge(type){
-  var map={
-    'Lanzamiento':'tb tl','Campa\u00f1a':'tb tc','Producci\u00f3n':'tb tp','Shooting':'tb tsh',
-    'Cena Privada':'tb tdn','Global Family':'tb tgf'
-  };
-  var keyMap={
-    'Lanzamiento':'type_launch','Campa\u00f1a':'type_campaign','Producci\u00f3n':'type_production','Shooting':'type_shooting',
-    'Cena Privada':'type_dinner','Global Family':'type_gf'
-  };
-  var cls=map[type]||'tb';
-  return '<span class="'+cls+'">'+( t(keyMap[type])||type )+'</span>';
+  var cls={
+    'Cena Privada Agentes':'tb tdn',
+    'Cena Privada':'tb tdn',
+    'Meeting':'tb tl',
+    'Entrevista':'tb tl',
+    'Cocktail':'tb tc',
+    'Brunch Agentes':'tb tp',
+    'Broker Presentation':'tb tp',
+    'Evento Privado Agentes':'tb tsh',
+    'Evento IP':'tb tgf',
+    'Eventos Marcas':'tb tsh',
+    'Evento Flia Dezer':'tb tc',
+  }[type]||'tb';
+  return '<span class="'+cls+'">'+type+'</span>';
 }
 function statusBadge(status){
   var map={Planificando:['sb2 sp','#8A6010','s_plan'],Confirmado:['sb2 sc2','#1A5A8A','s_conf'],'En curso':['sb2 sl','#1A6A3A','s_live'],Completado:['sb2 sd','#4A3A88','s_done']};
@@ -883,8 +1054,17 @@ function daysBadge(ds){
 }
 function typeColor(type){
   return {
-    'Lanzamiento':'#2A4C8A','Campa\u00f1a':'#8A5800','Producci\u00f3n':'#2E6040','Shooting':'#6A3A8A',
-    'Cena Privada':'#7A3A50','Global Family':'#2A6A7A'
+    'Cena Privada Agentes':'#7A3A50',
+    'Cena Privada':'#7A3A50',
+    'Meeting':'#2A4C8A',
+    'Entrevista':'#2A4C8A',
+    'Cocktail':'#8A5800',
+    'Brunch Agentes':'#2E6040',
+    'Broker Presentation':'#2E6040',
+    'Evento Privado Agentes':'#6A3A8A',
+    'Evento IP':'#2A6A7A',
+    'Eventos Marcas':'#6A3A8A',
+    'Evento Flia Dezer':'#8A5800',
   }[type]||'#888';
 }
 
@@ -990,12 +1170,17 @@ function initChart(){
   if(monthChart){ monthChart.destroy(); monthChart=null; }
   var months=TR[lang].cal_months.map(function(m){ return m.slice(0,3); });
   var counts={
-    'Lanzamiento':Array(12).fill(0),
-    'Campa\u00f1a':Array(12).fill(0),
-    'Producci\u00f3n':Array(12).fill(0),
-    'Shooting':Array(12).fill(0),
+    'Cena Privada Agentes':Array(12).fill(0),
     'Cena Privada':Array(12).fill(0),
-    'Global Family':Array(12).fill(0),
+    'Meeting':Array(12).fill(0),
+    'Entrevista':Array(12).fill(0),
+    'Cocktail':Array(12).fill(0),
+    'Brunch Agentes':Array(12).fill(0),
+    'Broker Presentation':Array(12).fill(0),
+    'Evento Privado Agentes':Array(12).fill(0),
+    'Evento IP':Array(12).fill(0),
+    'Eventos Marcas':Array(12).fill(0),
+    'Evento Flia Dezer':Array(12).fill(0),
   };
   events.forEach(function(e){
     if(!e.date) return;
@@ -1007,12 +1192,17 @@ function initChart(){
     data:{
       labels:months,
       datasets:[
-        {label:t('type_launch'),     data:counts['Lanzamiento'],      backgroundColor:'rgba(42,76,138,0.75)',  borderRadius:3,borderSkipped:false},
-        {label:t('type_dinner'),     data:counts['Cena Privada'],     backgroundColor:'rgba(122,58,80,0.75)',  borderRadius:3,borderSkipped:false},
-        {label:t('type_gf'),         data:counts['Global Family'],    backgroundColor:'rgba(42,106,122,0.75)', borderRadius:3,borderSkipped:false},
-        {label:t('type_campaign'),   data:counts['Campa\u00f1a'],     backgroundColor:'rgba(138,88,0,0.75)',   borderRadius:3,borderSkipped:false},
-        {label:t('type_production'), data:counts['Producci\u00f3n'],  backgroundColor:'rgba(46,96,64,0.75)',   borderRadius:3,borderSkipped:false},
-        {label:t('type_shooting'),   data:counts['Shooting'],         backgroundColor:'rgba(106,58,138,0.75)',borderRadius:3,borderSkipped:false},
+        {label:'Cena Privada Agentes', data:counts['Cena Privada Agentes'],      backgroundColor:'rgba(122,58,80,0.75)',  borderRadius:3,borderSkipped:false},
+        {label:'Cena Privada',         data:counts['Cena Privada'],              backgroundColor:'rgba(180,80,110,0.75)', borderRadius:3,borderSkipped:false},
+        {label:'Meeting',              data:counts['Meeting'],                   backgroundColor:'rgba(42,76,138,0.75)',  borderRadius:3,borderSkipped:false},
+        {label:'Entrevista',           data:counts['Entrevista'],                backgroundColor:'rgba(70,110,180,0.75)', borderRadius:3,borderSkipped:false},
+        {label:'Cocktail',             data:counts['Cocktail'],                  backgroundColor:'rgba(138,88,0,0.75)',   borderRadius:3,borderSkipped:false},
+        {label:'Brunch Agentes',       data:counts['Brunch Agentes'],            backgroundColor:'rgba(46,96,64,0.75)',   borderRadius:3,borderSkipped:false},
+        {label:'Broker Presentation',  data:counts['Broker Presentation'],       backgroundColor:'rgba(60,130,90,0.75)',  borderRadius:3,borderSkipped:false},
+        {label:'Evento Privado Ag.',   data:counts['Evento Privado Agentes'],    backgroundColor:'rgba(106,58,138,0.75)', borderRadius:3,borderSkipped:false},
+        {label:'Evento IP',            data:counts['Evento IP'],                 backgroundColor:'rgba(42,106,122,0.75)', borderRadius:3,borderSkipped:false},
+        {label:'Eventos Marcas',       data:counts['Eventos Marcas'],            backgroundColor:'rgba(140,80,160,0.75)', borderRadius:3,borderSkipped:false},
+        {label:'Evento Flia Dezer',    data:counts['Evento Flia Dezer'],         backgroundColor:'rgba(180,130,0,0.75)',  borderRadius:3,borderSkipped:false},
       ]
     },
     options:{
@@ -1039,16 +1229,19 @@ function renderFilters(){
   }
   var srchVal=(document.getElementById('srch-input')||{}).value||'';
   row.innerHTML=
-    chip(t('filt_all'),         filterType==='Todos'&&!filterStatus,"setFilter('Todos',null)")
-    +chip(t('type_launch'),     filterType==='Lanzamiento',          "setFilter('Lanzamiento',null)")
-    +chip(t('type_dinner'),     filterType==='Cena Privada',         "setFilter('Cena Privada',null)")
-    +chip(t('type_gf'),         filterType==='Global Family',        "setFilter('Global Family',null)")
-    +chip(t('type_campaign'),   filterType==='Campa\u00f1a',         "setFilter('Campa\u00f1a',null)")
-    +chip(t('type_production'), filterType==='Producci\u00f3n',      "setFilter('Producci\u00f3n',null)")
-    +chip(t('type_shooting'),   filterType==='Shooting',             "setFilter('Shooting',null)")
-    +chip(t('s_plan'), filterStatus==='Planificando',"setFilter(null,'Planificando')")
-    +chip(t('s_conf'), filterStatus==='Confirmado',  "setFilter(null,'Confirmado')")
-    +'<input type="text" class="srch" id="srch-input" placeholder="'+t('search_ph')+'" oninput="renderTable()" value="'+srchVal+'">';
+    chip(t('filt_all'), filterType==='Todos'&&!filterStatus,"setFilter('Todos',null)")
+    +chip('Cenas Agentes', filterType==='Cena Privada Agentes',"setFilter('Cena Privada Agentes',null)")
+    +chip('Cenas Privadas', filterType==='Cena Privada',"setFilter('Cena Privada',null)")
+    +chip('Meetings', filterType==='Meeting',"setFilter('Meeting',null)")
+    +chip('Entrevistas', filterType==='Entrevista',"setFilter('Entrevista',null)")
+    +chip('Cocktails', filterType==='Cocktail',"setFilter('Cocktail',null)")
+    +chip('Brunch', filterType==='Brunch Agentes',"setFilter('Brunch Agentes',null)")
+    +chip('Broker Pres.', filterType==='Broker Presentation',"setFilter('Broker Presentation',null)")
+    +chip('Ev. Privado Ag.', filterType==='Evento Privado Agentes',"setFilter('Evento Privado Agentes',null)")
+    +chip('Evento IP', filterType==='Evento IP',"setFilter('Evento IP',null)")
+    +chip('Marcas', filterType==='Eventos Marcas',"setFilter('Eventos Marcas',null)")
+    +chip('Flia Dezer', filterType==='Evento Flia Dezer',"setFilter('Evento Flia Dezer',null)")
+    +'<input id="srch-input" class="srch" placeholder="'+t('search_ph')+'" value="'+srchVal.replace(/"/g,'&quot;')+'" oninput="renderTable()">';
 }
 
 function renderTable(){
@@ -1088,7 +1281,7 @@ function renderTable(){
       +'<td>'+typeBadge(e.type)+'</td>'
       +'<td>'+daysBadge(e.date)+'</td>'
       +'<td style="white-space:nowrap">'+fmtDate(e.date)+'</td>'
-      +'<td>'+(e.time||'\u2014')+'</td>'
+      +'<td>'+(e.timeOpen?e.timeOpen+(e.timeClose?' – '+e.timeClose:''):'\u2014')+'</td>'
       +'<td style="max-width:160px;font-size:12px;color:var(--muted)">'+(e.property||'\u2014')+'</td>'
       +'<td style="text-align:center">'+(e.guests||'\u2014')+'</td>'
       +'<td>'+statusBadge(e.status)+'</td>'
@@ -1116,9 +1309,10 @@ function renderDetailPanel(){
 
   var bodyHtml='';
   if(detailTab==='info'){
+    var timeStr = (e.timeOpen||e.time||'\u2014') + (e.timeClose?' \u2013 '+e.timeClose:'');
     bodyHtml='<div class="ig">'
       +'<div class="if"><label>'+t('th_date')+'</label><p>'+fmtDate(e.date)+'</p></div>'
-      +'<div class="if"><label>'+t('th_time')+'</label><p>'+(e.time||'\u2014')+'</p></div>'
+      +'<div class="if"><label>'+t('f_time_open')+' / '+t('f_time_close')+'</label><p>'+timeStr+'</p></div>'
       +'<div class="if"><label>'+t('th_guests')+'</label><p>'+(e.guests||'\u2014')+'</p></div>'
       +'<div class="if" style="grid-column:1/-1"><label>'+t('th_property')+'</label><p style="font-size:12px">'+(e.property||'\u2014')+'</p></div>'
       +(e.owner?'<div class="if"><label>'+t('f_owner')+'</label><p>'+e.owner+'</p></div>':'')
@@ -1132,9 +1326,11 @@ function renderDetailPanel(){
     var items=e.checklist.length===0
       ?'<p style="font-size:13px;color:var(--muted)">'+t('ck_empty')+'</p>'
       :e.checklist.map(function(c){
-        return '<div class="ck-item '+(c.done?'done':'')+'">'
-          +'<input type="checkbox" class="ckcb" '+(c.done?'checked':'')+' onchange="toggleCk(event,'+e.id+','+c.id+')">'
-          +'<span class="ckt">'+c.text+'</span>'
+        var stateClass=(c.done?'done':'')+(c.crossed?' crossed':'');
+        return '<div class="ck-item '+stateClass+'">'
+          +'<input type="checkbox" class="ckcb" '+(c.done?'checked':'')+' onchange="toggleCk(event,'+e.id+','+c.id+')" title="Marcar como completado (✓)">'
+          +'<span class="ckt '+(c.crossed?'tacha':'')+'">'+c.text+'</span>'
+          +'<button class="ck-tachar '+(c.crossed?'tachar-active':'')+'" onclick="toggleCross('+e.id+','+c.id+')" title="Tachar">&#8212;</button>'
           +'<button class="ck-del" onclick="delCk('+e.id+','+c.id+')">&#10005;</button>'
           +'</div>';
       }).join('');
@@ -1197,8 +1393,17 @@ function renderCalendar(){
   while(cells.length%7!==0) cells.push({day:cells.length-daysInMonth-firstDay+1,cur:false});
 
   var pillClass={
-    'Lanzamiento':'cp-l','Campa\u00f1a':'cp-c','Producci\u00f3n':'cp-p','Shooting':'cp-s',
-    'Cena Privada':'cp-d','Global Family':'cp-g'
+    'Cena Privada Agentes':'cp-d',
+    'Cena Privada':'cp-d',
+    'Meeting':'cp-l',
+    'Entrevista':'cp-l',
+    'Cocktail':'cp-c',
+    'Brunch Agentes':'cp-p',
+    'Broker Presentation':'cp-p',
+    'Evento Privado Agentes':'cp-s',
+    'Evento IP':'cp-g',
+    'Eventos Marcas':'cp-s',
+    'Evento Flia Dezer':'cp-c',
   };
 
   var wrap=document.getElementById('cal-grid-wrap');
@@ -1324,6 +1529,13 @@ function toggleCk(ev, evId, ckId){
   saveToStorage();
 }
 
+function toggleCross(evId, ckId){
+  var e=events.find(function(x){ return x.id===evId; }); if(!e) return;
+  var c=e.checklist.find(function(x){ return x.id===ckId; }); if(!c) return;
+  c.crossed=!c.crossed;
+  saveToStorage(); renderDetailPanel(); renderTable();
+}
+
 function delCk(evId, ckId){
   var e=events.find(function(x){ return x.id===evId; }); if(!e) return;
   e.checklist=e.checklist.filter(function(c){ return c.id!==ckId; });
@@ -1334,7 +1546,7 @@ function addCk(evId){
   var inp=document.getElementById('ck-new-inp'); if(!inp) return;
   var text=inp.value.trim(); if(!text) return;
   var e=events.find(function(x){ return x.id===evId; }); if(!e) return;
-  e.checklist.push({id:genCkId(e),text:text,done:false});
+  e.checklist.push({id:genCkId(e),text:text,done:false,crossed:false});
   inp.value='';
   saveToStorage(); renderDetailPanel(); renderTable();
 }
@@ -1379,14 +1591,16 @@ function openModal(editData){
   document.getElementById('f-status').value  =editData?editData.status:'Planificando';
   document.getElementById('f-date').value    =editData?editData.date:'';
   document.getElementById('f-time').value    =editData?editData.time:'';
+  document.getElementById('f-time-open').value =editData?(editData.timeOpen||editData.time||''):'';
+  document.getElementById('f-time-close').value=editData?(editData.timeClose||''):'';
   document.getElementById('f-property').value=editData?editData.property:'';
   document.getElementById('f-guests').value  =editData?editData.guests:'';
   document.getElementById('f-owner').value   =editData?editData.owner:'';
   document.getElementById('f-reminder').value=editData?editData.reminder:3;
   document.getElementById('f-notes').value   =editData?editData.notes:'';
   var typeEl=document.getElementById('f-type');
-  typeEl.value=editData?editData.type:'Lanzamiento';
-  if(!typeEl.value) typeEl.value='Lanzamiento';
+  typeEl.value=editData?editData.type:'Cena Privada Agentes';
+  if(!typeEl.value) typeEl.value='Cena Privada Agentes';
   updateModalType();
 }
 
@@ -1453,7 +1667,9 @@ function saveEvent(){
   var data={
     name:name,type:type,status:newStatus,
     date:document.getElementById('f-date').value,
-    time:document.getElementById('f-time').value,
+    time:document.getElementById('f-time-open').value,
+    timeOpen:document.getElementById('f-time-open').value,
+    timeClose:document.getElementById('f-time-close').value,
     property:document.getElementById('f-property').value,
     guests:document.getElementById('f-guests').value,
     owner:document.getElementById('f-owner').value,
@@ -1469,7 +1685,7 @@ function saveEvent(){
       if(oldStatus!==newStatus) events[idx].history.push({ts:nowTS(),action:'status',val:newStatus});
     }
   } else {
-    var tasks=(CHECKLIST_TEMPLATES[type]||[]).map(function(text,i){ return {id:i+1,text:text,done:false}; });
+    var tasks=(CHECKLIST_TEMPLATES[type]||[]).map(function(text,i){ return {id:i+1,text:text,done:false,crossed:false}; });
     events.push(Object.assign({id:nextId++},data,{checklist:tasks,quickNote:'',history:[{ts:nowTS(),action:'created'}]}));
   }
   saveToStorage(); closeModal();
